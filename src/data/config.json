@@ -1,0 +1,76 @@
+{
+  "job": "Process Engineer",
+  "jobEs": "Ingeniero de Procesos",
+  "name": "Marco",
+  "desc": "Developer, Engineer & always thinking in stuff",
+  "descEs": "Desarrollador, Ingeniero y siempre pensando en cosas",
+  "aboutDesc": "I'm Marco, a Process Engineer focused on analyzing parts of your business that can be improved. I also like to code and build websites and marketing.",
+  "aboutDescEs": "Soy Marco, un Ingeniero de Procesos enfocado en analizar partes de tu negocio que pueden mejorarse. También me gusta programar y construir sitios web y marketing.",
+  "email": "marco@soul23.cloud",
+  "status": "on",
+  "hireMeLink": "https://calendly.com/alma_dev/30min",
+  "projects": [
+    {
+      "project-image-url": "/icon-1.jpg",
+      "project-name": "Hiring Automation",
+      "project-name-es": "Automatización de Contratación",
+      "project-desc": "Local business hiring automation",
+      "project-desc-es": "Automatización de contratación para negocios locales",
+      "link": ""
+    },
+    {
+      "project-image-url": "/icon-2.jpg",
+      "project-name": "AI Survey Service",
+      "project-name-es": "Servicio de Encuestas con IA",
+      "project-desc": "Survey service with AI and instant feedback",
+      "project-desc-es": "Servicio de encuestas con IA y feedback inmediato",
+      "link": ""
+    },
+    {
+      "project-image-url": "/icon-3.png",
+      "project-name": "Web Development",
+      "project-name-es": "Desarrollo Web",
+      "project-desc": "Websites and web apps built with modern tech",
+      "project-desc-es": "Sitios web y web apps construidos con tecnología moderna",
+      "link": ""
+    },
+    {
+      "project-image-url": "/icon-4.png",
+      "project-name": "Process Optimization",
+      "project-name-es": "Optimización de Procesos",
+      "project-desc": "Administrative and operational process optimization for SMBs",
+      "project-desc-es": "Optimización de procesos administrativos y operativos para PYMES",
+      "link": ""
+    },
+    {
+      "project-image-url": "/icon-1.jpg",
+      "project-name": "Vanity Nail Salon Marketing",
+      "project-name-es": "Marketing Vanity Nail Salon",
+      "project-desc": "Marketing campaign for Vanity Nail Salon",
+      "project-desc-es": "Campaña de marketing para Vanity Nail Salon",
+      "link": "https://vanityexperience.mx/"
+    },
+    {
+      "project-image-url": "/icon-2.jpg",
+      "project-name": "Construction Supervision",
+      "project-name-es": "Supervisión de Obra",
+      "project-desc": "Construction supervision and commercial space installations",
+      "project-desc-es": "Supervisión de obra e instalaciones de locales comerciales",
+      "link": ""
+    }
+  ],
+  "social": [
+    {
+      "icon": "FaLinkedinIn",
+      "link": "https://www.linkedin.com/in/marcogll/"
+    },
+    {
+      "icon": "FaGithub",
+      "link": "https://github.com/marcogll"
+    },
+    {
+      "icon": "FaXTwitter",
+      "link": "https://x.com/marcog_mx"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+import Profile from "../components/Profile";
+import Projects from "../components/Projects";
+
+export default function Home() {
+  return (
+    <>
+      <Profile />
+      <Projects />
+      <div className="flex flex-col items-center justify-center py-2">
+        <h2 className="text-3xl font-semibold text-center">
+          Let&rsquo;s work together.
+        </h2>
+        <p className="text-sm md:text-lg text-gray-500 mt-2">
+          Understanding your problem and finding the best solution.
+        </p>
+      </div>
+    </>
+  );
+}
