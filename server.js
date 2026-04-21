@@ -44,7 +44,7 @@ app.get('/api/quote', (req, res) => {
   res.json({ phrase: randomPhrase });
 });
 
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(join(__dirname, 'dist/index.html'));
 });
 
