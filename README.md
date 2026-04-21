@@ -1,74 +1,111 @@
-<div align="center">
+# Marco G | Portfolio
 
-<br/>
-
-<h1 align="center">V3 Minimal Portfolio Website 😎</h1>
-
-<div align="center">
-  <img src="https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white&style=for-the-badge" height="40" alt="Vite logo" />
-  <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black&style=for-the-badge" height="40" alt="React logo" />
-  <img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=black&style=for-the-badge" height="40" alt="Tailwind CSS logo" />
-</div>
-
-</div>
+Personal portfolio website with contact form integrated with n8n.
 
 ---
 
-### 🧠 What is it
+## 🚀 Quick Start
 
-A minimal, sleek, and highly customizable portfolio template built using **React** and **Tailwind CSS**.
-It is designed to help developers and designers showcase their projects, skills, and professional background with a clean, modern interface and smooth user experience.
+```bash
+npm install
+npm run dev
+```
+
+## 📦 Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `node server.js` | Start production server |
+
+## ⚙️ Configuration
+
+Edit `src/data/config.json`:
+
+```json
+{
+  "name": "Marco",
+  "job": "Process Engineer",
+  "jobEs": "Ingeniero de Procesos",
+  "desc": "Developer, Engineer & always thinking in stuff",
+  "descEs": "Desarrollador, Ingeniero y siempre pensando en cosas",
+  "email": "marco@soul23.cloud",
+  "status": "on",
+  "hireMeLink": "https://calendly.com/alma_dev/30min",
+  "contactWebhook": "https://your-n8n-webhook-url",
+  "projects": [...],
+  "social": [...]
+}
+```
+
+### Config Options
+
+| Field | Description |
+|-------|-------------|
+| `name` | Your name |
+| `job` / `jobEs` | Job title (EN/ES) |
+| `desc` / `descEs` | Description (EN/ES) |
+| `email` | Contact email |
+| `status` | `on` = available, `off` = busy |
+| `contactWebhook` | n8n webhook URL for contact form |
+
+## 🌐 Deployment (Coolify)
+
+### Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT` | 3002 | Server port |
+| `TIMEZONE` | UTC | Timezone for `/api/time` |
+
+### Docker
+
+```bash
+docker-compose up -d
+```
+
+### Coolify Setup
+
+- **Build Command**: `npm run build`
+- **Start Command**: `node server.js`
+- **Port**: 3002
+
+## 🔌 API Endpoints
+
+| Endpoint | Description |
+|----------|-------------|
+| `GET /api/time` | Get current time (respects TIMEZONE env) |
+| `GET /api/quote` | Get random phrase |
+
+### Time Response
+
+```json
+{
+  "utc_iso": "2026-04-21T17:47:27.836Z",
+  "unixtime": 1776793647,
+  "datetime_human": "04/21/2026, 11:47:27",
+  "timezone": "America/Monterrey"
+}
+```
+
+## 🌎 Translations
+
+The site supports English and Spanish. Switch by clicking the flag icon in the navbar.
+
+## 📝 Contact Form
+
+When clicking "Hire Me", a modal opens with fields:
+- Name (required)
+- Email (required)
+- Phone (optional)
+- Business (optional)
+- Subject (required)
+- Message (required)
+
+Data is sent to `contactWebhook` URL as JSON.
 
 ---
 
-### 💡 Why it is
-
-Personal portfolios require **fast, responsive, and visually appealing designs**.
-This template provides a modern platform to display skills, projects, and professional information effectively, ensuring a smooth user experience across all devices.
-
----
-
-### ⚙️ What is the Problem
-
-Many portfolio templates:
-
-- Are difficult to customize or extend
-- Lack responsive design across devices
-- Have unoptimized or cluttered codebases
-
----
-
-### 🧩 What is the Solution
-
-This portfolio solves these problems with:
-
-- ⚡ **React** for component based, maintainable frontend development
-- 🎨 **Tailwind CSS** for utility first styling and design consistency
-- 🧠 **Vite** for fast builds, optimized bundling, and lean development server
-- 📱 Fully responsive layout for mobile, tablet, and desktop
-- ♻️ Clean and scalable code structure for easy customization
-
----
-
-### 🚀 Result
-
-A polished, modern portfolio that:
-
-- Showcases projects, skills, and personal info elegantly
-- Is fully responsive and SEO friendly
-- Provides fast load times and smooth interactions
-- Is easy to customize and extend for future enhancements
-
----
-
-### 🛠️ Technology Used
-
-React.js • Tailwind CSS • Vite
-
----
-
-<div align="center">
-
-Designed and Developed with 🧠 by **Muhammad Tanveer Abbas** 🌟
-
-</div>
+Built with React + Tailwind CSS + Vite
