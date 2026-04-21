@@ -9,6 +9,8 @@ const quotes = JSON.parse(readFileSync(join(__dirname, 'src/info/quotes.json'), 
 const app = express();
 const PORT = process.env.PORT || 3002;
 
+app.use(express.static(join(__dirname, 'dist')));
+
 app.get('/api/time', (req, res) => {
   const timezone = process.env.TIMEZONE || 'UTC';
   const now = new Date();
@@ -40,6 +42,10 @@ app.get('/api/quote', (req, res) => {
   const phrases = quotes.phrases;
   const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
   res.json({ phrase: randomPhrase });
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(join(__dirname, 'dist/index.html'));
 });
 
 app.listen(PORT, () => {
