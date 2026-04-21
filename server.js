@@ -10,6 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 
 app.use(express.json());
+app.use(express.static(join(__dirname, 'dist')));
 
 app.get('/api/time', (req, res) => {
   const timezone = process.env.TIMEZONE || 'UTC';
