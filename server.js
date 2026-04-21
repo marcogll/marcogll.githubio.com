@@ -1,16 +1,41 @@
 import express from 'express';
-import { readFileSync } from 'fs';
+import { readFileSync, readdirSync, statSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const quotes = JSON.parse(readFileSync(join(__dirname, 'src/info/quotes.json'), 'utf-8'));
+const scriptsDirectory = join(__dirname, 'scripts');
 
 const app = express();
 const PORT = process.env.PORT || 3002;
 
 app.use(express.json());
 app.use(express.static(join(__dirname, 'dist')));
+app.use('/api/scripts/files', express.static(scriptsDirectory));
+
+app.get('/api/scripts-manifest', (req, res) => {
+  const scripts = readdirSync(scriptsDirectory, { withFileTypes: true })
+    .filter((entry) => entry.isFile())
+    .map((entry) => {
+      const filePath = join(scriptsDirectory, entry.name);
+      const stats = statSync(filePath);
+      const extension = entry.name.includes('.')
+        ? entry.name.split('.').pop().toLowerCase()
+        : '';
+
+      return {
+        name: entry.name,
+        extension,
+        size: stats.size,
+        modifiedAt: stats.mtime.toISOString(),
+        url: `/api/scripts/files/${encodeURIComponent(entry.name)}`
+      };
+    })
+    .sort((left, right) => right.modifiedAt.localeCompare(left.modifiedAt));
+
+  res.json({ scripts });
+});
 
 app.get('/api/time', (req, res) => {
   const timezone = process.env.TIMEZONE || 'UTC';

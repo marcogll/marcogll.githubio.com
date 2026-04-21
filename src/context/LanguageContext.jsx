@@ -31,6 +31,7 @@ export const translations = {
     successMessage: "Message sent successfully!",
     errorMessage: "Error sending message. Try again.",
     rightsReserved: "All rights reserved",
+    footerLegal: "Website, content and brand assets protected.",
   },
   es: {
     hireMe: "Contáctame",
@@ -60,6 +61,7 @@ export const translations = {
     successMessage: "¡Mensaje enviado exitosamente!",
     errorMessage: "Error al enviar. Intenta de nuevo.",
     rightsReserved: "Todos los derechos reservados",
+    footerLegal: "Sitio, contenido y recursos de marca protegidos.",
   },
 };
 

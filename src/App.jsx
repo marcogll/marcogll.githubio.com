@@ -3,8 +3,12 @@ import Navbar from "./components/Navbar";
 import Social from "./components/Social";
 import SiteRoutes from "./routes/SiteRoutes";
 import ContactModal from "./components/ContactModal";
+import { useLanguage } from "./context/LanguageContext";
+import soul23Logo from "./assets/logo_soul23/soul23_logo.svg";
 
 function App() {
+  const { t } = useLanguage();
+
   return (
     <>
       <Navbar />
@@ -27,14 +31,24 @@ function App() {
           href="https://soul23.cloud"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-x-2 text-sm text-gray-400 hover:text-gray-600 transition-colors"
+          className="flex flex-col items-center gap-y-3 px-4 py-5 text-center text-sm text-gray-500 transition-colors hover:text-gray-600"
         >
-          <img 
-            src="/src/assets/logo_soul23/soul23_logo.svg" 
-            alt="soul23.cloud" 
-            className="w-5 h-5"
+          <img
+            src={soul23Logo}
+            alt="soul23.cloud"
+            className="w-36 opacity-50"
           />
-          <span>© {new Date().getFullYear()} soul23.cloud</span>
+          <div className="space-y-1">
+            <p className="text-sm font-medium text-gray-500">
+              © {new Date().getFullYear()} soul23.cloud
+            </p>
+            <p className="text-xs text-gray-400">
+              {t.rightsReserved}.
+            </p>
+            <p className="text-xs text-gray-400">
+              {t.footerLegal}
+            </p>
+          </div>
         </a>
       </footer>
     </>

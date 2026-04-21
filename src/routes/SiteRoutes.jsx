@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Projects from "../pages/Projects";
-import ApiDocs from "../pages/ApiDocs";
+import ApiScripts from "../pages/ApiScripts";
 import PageNotFound from "../pages/PageNotFound";
 
 export default function SiteRoutes() {
@@ -11,7 +11,7 @@ export default function SiteRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/projects" element={<Projects />} />
-      <Route path="/api-docs" element={<ApiDocs />} />
+      <Route path="/api/scripts" element={<ApiScripts />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

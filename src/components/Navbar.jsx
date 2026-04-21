@@ -46,7 +46,7 @@ export default function Navbar() {
               </NavLink>
 
               <NavLink
-                to="/api-docs"
+                to="/api/scripts"
                 className={({ isActive }) =>
                   isActive
                     ? "bg-white rounded-full p-2 transition-all duration-300"
@@ -65,19 +65,17 @@ export default function Navbar() {
               >
                 {lang === "en" ? "🇺🇸" : "🇲🇽"}
               </button>
-              <button
-                type="button"
-                onClick={() => {
-                  const modal = document.getElementById('contact-modal');
-                  if (modal) modal.showModal();
-                }}
+              <a
+                href={configData.hireMeLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-x-1 px-3 py-1.5 text-sm font-medium text-white bg-black border border-black rounded-md relative overflow-hidden shadow-md mx-7 before:absolute before:right-0 before:top-0 before:h-10 before:w-5 before:translate-x-10 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:before:-translate-x-36"
               >
                 <span className="material-symbols-rounded text-lg">
                   calendar_month
                 </span>
                 <span className="hidden md:block">{t.letsTalk}</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
