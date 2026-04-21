@@ -4,13 +4,13 @@ import { useLanguage } from "../context/LanguageContext";
 
 export default function Navbar() {
   const configData = getConfigData();
-  const { t, toggleLang, toggleTheme, lang, theme } = useLanguage();
+  const { t, toggleLang, lang } = useLanguage();
 
   return (
     <>
       <header className="py-2 px-2 fixed top-0 left-0 w-full z-40">
         <div className="mx-auto max-w-xl ">
-          <div className="backdrop-filter backdrop-blur-lg bg-white bg-opacity-40 rounded-xl flex items-center justify-between shadow-md dark:bg-gray-800 dark:bg-opacity-40">
+          <div className="backdrop-filter backdrop-blur-lg bg-white bg-opacity-40 rounded-xl flex items-center justify-between shadow-md">
             <div className="flex gap-x-3 px-5 py-2">
               <NavLink
                 to="/"
@@ -59,11 +59,11 @@ export default function Navbar() {
             <div className="flex items-center gap-x-2">
               <button
                 type="button"
-                onClick={toggleTheme}
+                onClick={toggleLang}
                 className="p-2 text-lg"
-                title={theme === 'light' ? 'Dark mode' : 'Light mode'}
+                title={lang === "en" ? "Español" : "English"}
               >
-                {theme === 'light' ? '🌙' : '☀️'}
+                {lang === "en" ? "🇺🇸" : "🇲🇽"}
               </button>
               <button
                 type="button"
