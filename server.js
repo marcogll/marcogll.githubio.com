@@ -9,7 +9,7 @@ const quotes = JSON.parse(readFileSync(join(__dirname, 'src/info/quotes.json'), 
 const app = express();
 const PORT = process.env.PORT || 3002;
 
-app.use(express.static(join(__dirname, 'dist')));
+app.use(express.json());
 
 app.get('/api/time', (req, res) => {
   const timezone = process.env.TIMEZONE || 'UTC';
@@ -42,6 +42,25 @@ app.get('/api/quote', (req, res) => {
   const phrases = quotes.phrases;
   const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
   res.json({ phrase: randomPhrase });
+});
+
+app.post('/api/contact', async (req, res) => {
+  const webhookUrl = process.env.CONTACT_WEBHOOK;
+  
+  if (!webhookUrl) {
+    return res.status(500).json({ error: 'Webhook not configured' });
+  }
+
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body),
+    });
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to send' });
+  }
 });
 
 app.use((req, res) => {

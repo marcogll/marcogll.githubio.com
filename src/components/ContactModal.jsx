@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { getConfigData } from "../data/configReader";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function ContactModal({ isOpen, onClose }) {
@@ -12,7 +11,6 @@ export default function ContactModal({ isOpen, onClose }) {
     message: "",
   });
   const [status, setStatus] = useState("idle");
-  const configData = getConfigData();
   const { t, lang } = useLanguage();
 
   if (!isOpen) return null;
@@ -22,24 +20,27 @@ export default function ContactModal({ isOpen, onClose }) {
     setStatus("sending");
 
     try {
-      const webhookUrl = configData.contactWebhook;
-      if (webhookUrl) {
-        await fetch(webhookUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...formData,
-            _lang: lang,
-            _timestamp: new Date().toISOString(),
-          }),
-        });
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          _lang: lang,
+          _timestamp: new Date().toISOString(),
+        }),
+      });
+      
+      if (response.ok) {
+        setStatus("sent");
+        setFormData({ name: "", email: "", phone: "", business: "", subject: "", message: "" });
+        setTimeout(() => {
+          setStatus("idle");
+          onClose();
+        }, 2500);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 3000);
       }
-      setStatus("sent");
-      setFormData({ name: "", email: "", phone: "", business: "", subject: "", message: "" });
-      setTimeout(() => {
-        setStatus("idle");
-        onClose();
-      }, 2500);
     } catch (error) {
       setStatus("error");
       setTimeout(() => setStatus("idle"), 3000);
