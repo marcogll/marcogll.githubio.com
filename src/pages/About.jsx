@@ -7,28 +7,28 @@ const SKILLS = [
     category: "Core Expertise",
     categoryEs: "Experiencia Central",
     items: [
-      { name: "Automatización de Procesos", nameEs: "Automatización de Procesos", score: 10 },
-      { name: "Optimización de Procesos", nameEs: "Optimización de Procesos", score: 9 },
-      { name: "Gestión de Negocios de Manufactura", nameEs: "Gestión de Negocios de Manufactura", score: 9 },
-      { name: "Ingeniería Mecatrónica", nameEs: "Ingeniería Mecatrónica", score: 9 },
+      { name: "Process Automation", nameEs: "Automatización de Procesos", score: 10 },
+      { name: "Process Optimization", nameEs: "Optimización de Procesos", score: 9 },
+      { name: "Manufacturing Business Management", nameEs: "Gestión de Negocios de Manufactura", score: 9 },
+      { name: "Mechatronics Engineering", nameEs: "Ingeniería Mecatrónica", score: 9 },
     ],
   },
   {
-    category: "Desarrollo y Tech Stack",
+    category: "Development & Tech Stack",
     categoryEs: "Desarrollo y Tech Stack",
     items: [
-      { name: "Bots y Scripts", nameEs: "Bots y Scripts", score: 10 },
+      { name: "Bots & Scripts", nameEs: "Bots y Scripts", score: 10 },
       { name: "Python & Node.js", nameEs: "Python & Node.js", score: 9.5 },
       { name: "Frontend (HTML, CSS, JS)", nameEs: "Frontend (HTML, CSS, JS)", score: 8 },
     ],
   },
   {
-    category: "Infraestructura y Soporte",
+    category: "Infrastructure & Support",
     categoryEs: "Infraestructura y Soporte",
     items: [
       { name: "Hosting", nameEs: "Hosting", score: 10 },
-      { name: "Soporte Online y Remoto", nameEs: "Soporte Online y Remoto", score: 10 },
-      { name: "Docker, Kubernetes y Servidores", nameEs: "Docker, Kubernetes y Servidores", score: 8 },
+      { name: "Online & Remote Support", nameEs: "Soporte Online y Remoto", score: 10 },
+      { name: "Docker, Kubernetes & Servers", nameEs: "Docker, Kubernetes y Servidores", score: 8 },
     ],
   },
 ];
@@ -89,7 +89,7 @@ export default function About() {
       <div className="px-7 py-7 flex flex-col items-center pt-3 gap-8">
         <div className="flex flex-col gap-y-4 max-w-3xl w-full mx-auto text-center">
           <h1 className="text-4xl font-semibold tracking-tighter">
-            {t.im} {configData.name}
+            {t.hiIm} {configData.name}
           </h1>
           <p className="text-lg text-gray-500 font-normal tracking-tight">
             {aboutDesc}

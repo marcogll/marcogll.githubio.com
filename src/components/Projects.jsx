@@ -3,15 +3,9 @@ import { getConfigData } from "../data/configReader";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 
-const ProjectImage = ({ imageUrl, projectName }) => (
-  <div className="rounded-full overflow-hidden items-center justify-center border border-gray-100 group-hover:border-gray-200 transition-colors duration-200 hidden md:flex md:items-center md:justify-center">
-    <div className="w-[52px] h-[52px] rounded-full overflow-hidden">
-      <img
-        className="w-full h-full object-cover"
-        src={imageUrl}
-        alt={projectName}
-      />
-    </div>
+const ProjectIcon = ({ icon }) => (
+  <div className="rounded-full items-center justify-center border border-gray-200 group-hover:border-gray-300 transition-colors duration-200 hidden md:flex md:items-center md:justify-center bg-gray-50">
+    <span className="material-symbols-rounded text-2xl text-gray-600">{icon}</span>
   </div>
 );
 
@@ -34,10 +28,7 @@ const ProjectCard = ({ project }) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <ProjectImage
-        imageUrl={project["project-image-url"]}
-        projectName={name}
-      />
+      <ProjectIcon icon={project["project-icon"]} />
       <ProjectContent
         name={name}
         description={description}

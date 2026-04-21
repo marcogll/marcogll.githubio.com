@@ -16,7 +16,9 @@ export const translations = {
     backToHome: "Back to Home",
     viewAll: "View All",
     im: "I'm",
+    hiIm: "Hi, I'm",
     letsWork: "Let's work together.",
+    understanding: "Understanding your problem and finding the best solution.",
     crafting: "Crafting engaging user experiences",
   },
   es: {
@@ -32,7 +34,9 @@ export const translations = {
     backToHome: "Volver",
     viewAll: "Ver Todo",
     im: "Soy",
+    hiIm: "Hola, soy",
     letsWork: "Trabajemos juntos.",
+    understanding: "Entendiendo tu problema y encontrando la mejor solución.",
     crafting: "Creando experiencias de usuario atractivas",
   },
 };

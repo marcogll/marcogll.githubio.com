@@ -4,14 +4,14 @@
   "name": "Marco",
   "desc": "Developer, Engineer & always thinking in stuff",
   "descEs": "Desarrollador, Ingeniero y siempre pensando en cosas",
-  "aboutDesc": "I'm Marco, a Process Engineer focused on analyzing parts of your business that can be improved. I also like to code and build websites and marketing.",
-  "aboutDescEs": "Soy Marco, un Ingeniero de Procesos enfocado en analizar partes de tu negocio que pueden mejorarse. También me gusta programar y construir sitios web y marketing.",
+  "aboutDesc": "A Process Engineer focused on analyzing parts of your business that can be improved. I also like to code and build websites and marketing.",
+  "aboutDescEs": "Un Ingeniero de Procesos enfocado en analizar partes de tu negocio que pueden mejorarse. También me gusta programar y construir sitios web y marketing.",
   "email": "marco@soul23.cloud",
   "status": "on",
   "hireMeLink": "https://calendly.com/alma_dev/30min",
   "projects": [
     {
-      "project-image-url": "/icon-1.jpg",
+      "project-icon": "settings_suggest",
       "project-name": "Hiring Automation",
       "project-name-es": "Automatización de Contratación",
       "project-desc": "Local business hiring automation",
@@ -19,7 +19,7 @@
       "link": ""
     },
     {
-      "project-image-url": "/icon-2.jpg",
+      "project-icon": "psychology",
       "project-name": "AI Survey Service",
       "project-name-es": "Servicio de Encuestas con IA",
       "project-desc": "Survey service with AI and instant feedback",
@@ -27,7 +27,7 @@
       "link": ""
     },
     {
-      "project-image-url": "/icon-3.png",
+      "project-icon": "code",
       "project-name": "Web Development",
       "project-name-es": "Desarrollo Web",
       "project-desc": "Websites and web apps built with modern tech",
@@ -35,7 +35,7 @@
       "link": ""
     },
     {
-      "project-image-url": "/icon-4.png",
+      "project-icon": "settings",
       "project-name": "Process Optimization",
       "project-name-es": "Optimización de Procesos",
       "project-desc": "Administrative and operational process optimization for SMBs",
@@ -43,7 +43,7 @@
       "link": ""
     },
     {
-      "project-image-url": "/icon-1.jpg",
+      "project-icon": "brush",
       "project-name": "Vanity Nail Salon Marketing",
       "project-name-es": "Marketing Vanity Nail Salon",
       "project-desc": "Marketing campaign for Vanity Nail Salon",
@@ -51,7 +51,7 @@
       "link": "https://vanityexperience.mx/"
     },
     {
-      "project-image-url": "/icon-2.jpg",
+      "project-icon": "construction",
       "project-name": "Construction Supervision",
       "project-name-es": "Supervisión de Obra",
       "project-desc": "Construction supervision and commercial space installations",
