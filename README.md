@@ -1,28 +1,39 @@
 # Marco G | Portfolio
 
-Personal portfolio website with contact form integrated with n8n.
+Portfolio personal construido con React, Vite y Express. El frontend sirve el sitio público y el backend expone una API simple para utilidades del sitio y publicación de scripts.
 
----
-
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 npm install
 npm run dev
 ```
 
-## 📦 Scripts
+Para correr el servidor Express en local:
 
-| Command | Description |
+```bash
+node server.js
+```
+
+Si quieres frontend y backend al mismo tiempo:
+
+```bash
+npm run dev:all
+```
+
+## Scripts de npm
+
+| Comando | Descripción |
 |---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `node server.js` | Start production server |
+| `npm run dev` | Inicia Vite en desarrollo |
+| `npm run build` | Genera el build de producción |
+| `npm run preview` | Previsualiza el build generado |
+| `npm run start` | Inicia `server.js` |
+| `npm run dev:all` | Levanta frontend y backend al mismo tiempo |
 
-## ⚙️ Configuration
+## Configuración
 
-Edit `src/data/config.json`:
+Edita `src/data/config.json`:
 
 ```json
 {
@@ -34,52 +45,53 @@ Edit `src/data/config.json`:
   "email": "marco@soul23.cloud",
   "status": "on",
   "hireMeLink": "https://calendly.com/alma_dev/30min",
-  "contactWebhook": "https://your-n8n-webhook-url",
-  "projects": [...],
-  "social": [...]
+  "projects": [],
+  "social": []
 }
 ```
 
-### Config Options
+### Campos importantes
 
-| Field | Description |
+| Campo | Descripción |
 |-------|-------------|
-| `name` | Your name |
-| `job` / `jobEs` | Job title (EN/ES) |
-| `desc` / `descEs` | Description (EN/ES) |
-| `email` | Contact email |
-| `status` | `on` = available, `off` = busy |
-| `contactWebhook` | n8n webhook URL for contact form |
+| `name` | Nombre mostrado en el sitio |
+| `job` / `jobEs` | Puesto en inglés y español |
+| `desc` / `descEs` | Descripción corta en inglés y español |
+| `email` | Correo para copiar desde el sitio |
+| `status` | `on` para disponible, `off` para ocupado |
+| `hireMeLink` | URL del botón con icono de calendario |
+| `projects` | Tarjetas del listado de proyectos |
+| `social` | Redes sociales del bloque de contacto |
 
-## 🌐 Deployment (Coolify)
+## Variables de entorno
 
-### Environment Variables
+`server.js` usa estas variables:
 
-| Variable | Default | Description |
+| Variable | Default | Descripción |
 |----------|---------|-------------|
-| `PORT` | 3002 | Server port |
-| `TIMEZONE` | UTC | Timezone for `/api/time` |
+| `PORT` | `3002` | Puerto del servidor Express |
+| `TIMEZONE` | `UTC` | Zona horaria usada por `/api/time` |
+| `CONTACT_WEBHOOK` | vacío | Webhook para `POST /api/contact` |
+| `VITE_API_PASSWORD` | vacío | Contraseña opcional para flujos frontend heredados |
 
-### Docker
+Ejemplo de `.env`:
 
-```bash
-docker-compose up -d
+```env
+PORT=3002
+TIMEZONE=America/Monterrey
+CONTACT_WEBHOOK=
+VITE_API_PASSWORD=
 ```
 
-### Coolify Setup
+## API
 
-- **Build Command**: `npm run build`
-- **Start Command**: `node server.js`
-- **Port**: 3002
+La API vive bajo `/api`.
 
-## 🔌 API Endpoints
+### `GET /api/time`
 
-| Endpoint | Description |
-|----------|-------------|
-| `GET /api/time` | Get current time (respects TIMEZONE env) |
-| `GET /api/quote` | Get random phrase |
+Regresa la fecha y hora actual según `TIMEZONE`.
 
-### Time Response
+Ejemplo de respuesta:
 
 ```json
 {
@@ -90,22 +102,135 @@ docker-compose up -d
 }
 ```
 
-## 🌎 Translations
+### `GET /api/quote`
 
-The site supports English and Spanish. Switch by clicking the flag icon in the navbar.
+Regresa una frase aleatoria tomada de `src/info/quotes.json`.
 
-## 📝 Contact Form
+Ejemplo:
 
-When clicking "Hire Me", a modal opens with fields:
-- Name (required)
-- Email (required)
-- Phone (optional)
-- Business (optional)
-- Subject (required)
-- Message (required)
+```json
+{
+  "phrase": "Lo que hoy parece lento es profundo."
+}
+```
 
-Data is sent to `contactWebhook` URL as JSON.
+### `POST /api/contact`
+
+Reenvía el payload al webhook configurado en `CONTACT_WEBHOOK`.
+
+Payload esperado:
+
+```json
+{
+  "name": "Marco",
+  "email": "marco@soul23.cloud",
+  "phone": "8112345678",
+  "business": "Soul23",
+  "subject": "Nuevo proyecto",
+  "message": "Quiero una landing page."
+}
+```
+
+Respuesta exitosa:
+
+```json
+{
+  "success": true
+}
+```
+
+Si `CONTACT_WEBHOOK` no existe, responde `500`.
+
+## Publicación de scripts
+
+El proyecto publica el contenido del directorio `scripts/` desde el backend.
+
+### Rutas disponibles
+
+| Ruta | Descripción |
+|------|-------------|
+| `GET /api/scripts-manifest` | Lista scripts disponibles con nombre, extensión, tamaño y fecha |
+| `GET /api/scripts/files/:filename` | Sirve el archivo solicitado |
+| `GET /api/scripts` | Vista frontend que consume el manifiesto y muestra los scripts publicados |
+
+Ejemplo de `GET /api/scripts-manifest`:
+
+```json
+{
+  "scripts": [
+    {
+      "name": "deploy.sh",
+      "extension": "sh",
+      "size": 697,
+      "modifiedAt": "2026-04-21T22:43:00.000Z",
+      "url": "/api/scripts/files/deploy.sh"
+    }
+  ]
+}
+```
+
+## Scripts del proyecto
+
+Los scripts físicos viven en `scripts/`.
+
+### `scripts/setup.sh`
+
+Prepara una instalación básica del proyecto:
+
+```bash
+./scripts/setup.sh [domain] [port] [timezone]
+```
+
+Ejemplo:
+
+```bash
+./scripts/setup.sh marco.soul23.cloud 3002 America/Monterrey
+```
+
+Qué hace:
+
+- Verifica que `node` y `npm` existan
+- Instala dependencias si falta `node_modules`
+- Ejecuta `npm run build`
+- Genera un archivo `.env`
+
+### `scripts/deploy.sh`
+
+Hace un despliegue simple por git en el servidor:
+
+```bash
+./scripts/deploy.sh
+```
+
+Qué hace:
+
+- Hace `git pull origin main`
+- Ejecuta `npm install`
+- Ejecuta `npm run build`
+- Reinicia `pm2` si está disponible
+
+## Deployment
+
+### Docker
+
+```bash
+docker-compose up -d
+```
+
+### Coolify
+
+- Build command: `npm run build`
+- Start command: `node server.js`
+- Port: `3002`
+
+## Idiomas
+
+El sitio soporta inglés y español. El cambio se hace desde el botón de bandera en el navbar.
+
+## Footer
+
+El footer usa `src/assets/logo_soul23/soul23_logo.svg` y muestra el texto legal adaptado al idioma activo.
 
 ---
 
-Built with React + Tailwind CSS + Vite
+Built with React + Tailwind CSS + Vite + Express
