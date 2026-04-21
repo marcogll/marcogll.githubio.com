@@ -1,10 +1,11 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const LanguageContext = createContext();
 
 export const translations = {
   en: {
     hireMe: "Hire Me",
+    letsTalk: "Let's talk",
     copyEmail: "Copy Email",
     copied: "Copied!",
     available: "available for work",
@@ -17,8 +18,6 @@ export const translations = {
     viewAll: "View All",
     im: "I'm",
     hiIm: "Hi, I'm",
-    letsTalk: "Let's talk",
-    letsTalkEs: "¿Platicamos?",
     understanding: "Understanding your problem and finding the best solution.",
     crafting: "Crafting engaging user experiences",
     contactName: "Name",
@@ -31,6 +30,7 @@ export const translations = {
     sending: "Sending...",
     successMessage: "Message sent successfully!",
     errorMessage: "Error sending message. Try again.",
+    rightsReserved: "All rights reserved",
   },
   es: {
     hireMe: "Contáctame",
@@ -47,7 +47,6 @@ export const translations = {
     viewAll: "Ver Todo",
     im: "Soy",
     hiIm: "Hola, soy",
-    letsWork: "Trabajemos juntos.",
     understanding: "Entendiendo tu problema y encontrando la mejor solución.",
     crafting: "Creando experiencias de usuario atractivas",
     contactName: "Nombre",
@@ -60,16 +59,35 @@ export const translations = {
     sending: "Enviando...",
     successMessage: "¡Mensaje enviado exitosamente!",
     errorMessage: "Error al enviar. Intenta de nuevo.",
+    rightsReserved: "Todos los derechos reservados",
   },
 };
 
 export function LanguageProvider({ children }) {
   const [lang, setLang] = useState("en");
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    }
+    return 'light';
+  });
   const t = translations[lang];
+  
   const toggleLang = () => setLang(lang === "en" ? "es" : "en");
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  };
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggleLang, t }}>
+    <LanguageContext.Provider value={{ lang, setLang, toggleLang, t, theme, toggleTheme }}>
       {children}
     </LanguageContext.Provider>
   );

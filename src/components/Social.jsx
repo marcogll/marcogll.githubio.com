@@ -1,4 +1,4 @@
-import { FaLinkedinIn, FaGithub, FaXTwitter } from "react-icons/fa6";
+import { FaLinkedinIn, FaGithub, FaXTwitter, FaInstagram } from "react-icons/fa6";
 import configData from "../data/config.json";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -20,6 +20,7 @@ export default function Social() {
                 FaLinkedinIn,
                 FaGithub,
                 FaXTwitter,
+                FaInstagram,
               };
               const IconComponent = iconMap[socialLink.icon];
 
@@ -27,9 +28,11 @@ export default function Social() {
                 <a
                   key={index}
                   href={socialLink.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-white p-2 rounded-full duration-300 border-2 border-gray-100 hover:border-gray-200 drop-shadow-sm"
                 >
-                  {<IconComponent size={20} />}
+                  {IconComponent && <IconComponent size={20} />}
                 </a>
               );
             })}
