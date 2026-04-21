@@ -1,6 +1,8 @@
 import CopyEmailButton from "../components/CopyEmailButton";
 import { getConfigData } from "../data/configReader";
 import { useLanguage } from "../context/LanguageContext";
+import { useState } from "react";
+import ContactModal from "../components/ContactModal";
 
 const SKILLS = [
   {
@@ -74,6 +76,7 @@ const SkillCategory = ({ category }) => {
 export default function About() {
   const configData = getConfigData() || {};
   const { t, lang } = useLanguage();
+  const [showContact, setShowContact] = useState(false);
 
   const aboutDesc = lang === "es" && configData.aboutDescEs ? configData.aboutDescEs : (configData.aboutDesc || "");
 
@@ -117,25 +120,22 @@ export default function About() {
       <div className="flex md:flex-row items-center justify-center py-8 px-4 max-w-3xl mx-auto">
         <div className="flex flex-col gap-y-2 w-full md:w-auto">
           <div className="flex items-center justify-center gap-4">
-            <a
-              href={configData.hireMeLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => setShowContact(true)}
+              className="inline-flex items-center gap-x-1 px-3 py-1.5 text-sm font-medium text-white bg-black border border-black rounded-md relative overflow-hidden shadow-md transition-all"
             >
-              <button
-                type="button"
-                className="inline-flex items-center gap-x-1 px-3 py-1.5 text-sm font-medium text-white bg-black border border-black rounded-md relative overflow-hidden shadow-md transition-all"
-              >
-                <span className="material-symbols-rounded text-sm">
-                  handshake
-                </span>
-                {t.hireMe}
-              </button>
-            </a>
+              <span className="material-symbols-rounded text-sm">
+                handshake
+              </span>
+              {t.hireMe}
+            </button>
             <CopyEmailButton className="mr-0 mb-0" />
           </div>
         </div>
       </div>
+
+      <ContactModal isOpen={showContact} onClose={() => setShowContact(false)} />
     </>
   );
 }

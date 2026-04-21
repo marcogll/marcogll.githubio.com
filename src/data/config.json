@@ -9,6 +9,7 @@
   "email": "marco@soul23.cloud",
   "status": "on",
   "hireMeLink": "https://calendly.com/alma_dev/30min",
+  "contactWebhook": "",
   "projects": [
     {
       "project-icon": "settings_suggest",

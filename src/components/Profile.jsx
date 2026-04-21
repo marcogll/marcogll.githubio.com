@@ -2,10 +2,13 @@ import profile from "../assets/profile.jpg";
 import CopyEmailButton from "./CopyEmailButton";
 import { getConfigData } from "../data/configReader";
 import { useLanguage } from "../context/LanguageContext";
+import { useState } from "react";
+import ContactModal from "./ContactModal";
 
 export default function Profile() {
   const configData = getConfigData() || {};
   const { t, toggleLang, lang } = useLanguage();
+  const [showContact, setShowContact] = useState(false);
   const isAvailable = configData.status === "on";
 
   const job = lang === "es" && configData.jobEs ? configData.jobEs : configData.job;
@@ -76,21 +79,16 @@ export default function Profile() {
           </p>
 
           <div className="flex flex-wrap gap-3 pt-4 sm:pt-5 justify-center md:justify-start">
-            <a
-              href={configData.hireMeLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => setShowContact(true)}
+              className="inline-flex items-center gap-x-1 px-3 py-1.5 text-sm font-medium text-white bg-black border border-black rounded-md relative overflow-hidden shadow-md before:absolute before:top-0 before:right-0 before:h-10 before:w-5 before:translate-x-10 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:before:-translate-x-36"
             >
-              <button
-                type="button"
-                className="inline-flex items-center gap-x-1 px-3 py-1.5 text-sm font-medium text-white bg-black border border-black rounded-md relative overflow-hidden shadow-md before:absolute before:top-0 before:right-0 before:h-10 before:w-5 before:translate-x-10 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:before:-translate-x-36"
-              >
-                <span className="material-symbols-rounded text-sm">
-                  handshake
-                </span>
-                {t.hireMe}
-              </button>
-            </a>
+              <span className="material-symbols-rounded text-sm">
+                handshake
+              </span>
+              {t.hireMe}
+            </button>
             <CopyEmailButton />
           </div>
         </div>
@@ -105,6 +103,8 @@ export default function Profile() {
           </div>
         </div>
       </div>
+
+      <ContactModal isOpen={showContact} onClose={() => setShowContact(false)} />
     </>
   );
 }
