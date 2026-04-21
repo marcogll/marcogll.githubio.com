@@ -45,16 +45,6 @@ export default function Navbar() {
                 <span className="material-symbols-rounded text-2xl">folder</span>
               </NavLink>
 
-              <NavLink
-                to="/api/scripts"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-white rounded-full p-2 transition-all duration-300"
-                    : "opacity-50 p-2 hover:bg-white rounded-full transition-all duration-300 hover:opacity-100"
-                }
-              >
-                <span className="material-symbols-rounded text-2xl">api</span>
-              </NavLink>
             </div>
             <div className="flex items-center gap-x-2">
               <button
