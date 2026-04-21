@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 const API_ENDPOINTS = [
@@ -34,6 +35,56 @@ const API_ENDPOINTS = [
 ];
 
 export default function ApiDocs() {
+  const { t } = useLanguage();
+  const [authenticated, setAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const apiPassword = import.meta.env.VITE_API_PASSWORD;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password === apiPassword || !apiPassword) {
+      setAuthenticated(true);
+      setError(false);
+    } else {
+      setError(true);
+    }
+  };
+
+  if (!apiPassword) {
+    return <ApiDocsContent />;
+  }
+
+  if (!authenticated) {
+    return (
+      <div className="px-4 py-6 max-w-md mx-auto">
+        <div className="bg-gray-50 rounded-xl p-6">
+          <h2 className="text-lg font-medium mb-4">API Access</h2>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
+            />
+            {error && <p className="text-red-500 text-xs">Invalid password</p>}
+            <button
+              type="submit"
+              className="w-full py-2 bg-black text-white rounded-lg text-sm font-medium"
+            >
+              Access
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  return <ApiDocsContent />;
+}
+
+function ApiDocsContent() {
   const { t } = useLanguage();
 
   return (
