@@ -1,10 +1,36 @@
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { getConfigData } from "../data/configReader";
 import { useLanguage } from "../context/LanguageContext";
 
+const TOOLS = [
+  { path: "/tools/qr", icon: "qr_code", label: "QR", labelEs: "QR" },
+  { path: "/tools/token", icon: "token", label: "Token", labelEs: "Token" },
+];
+
 export default function Navbar() {
   const configData = getConfigData();
   const { t, toggleLang, lang } = useLanguage();
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const toolsRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (toolsRef.current && !toolsRef.current.contains(e.target)) {
+        setToolsOpen(false);
+      }
+    };
+
+    if (toolsOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [toolsOpen]);
 
   return (
     <>
@@ -45,6 +71,45 @@ export default function Navbar() {
                 <span className="material-symbols-rounded text-2xl">folder</span>
               </NavLink>
 
+              <div className="relative" ref={toolsRef}>
+                <button
+                  type="button"
+                  onClick={() => setToolsOpen(!toolsOpen)}
+                  className={`p-2 transition-all duration-300 ${
+                    toolsOpen
+                      ? "bg-white rounded-full"
+                      : "opacity-50 hover:bg-white hover:rounded-full hover:opacity-100"
+                  }`}
+                >
+                  <span className="material-symbols-rounded text-2xl">construction</span>
+                </button>
+
+                {toolsOpen && (
+                  <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-lg border border-gray-100 py-2 min-w-[160px] z-50">
+                    {TOOLS.map((tool) => (
+                      <NavLink
+                        key={tool.path}
+                        to={tool.path}
+                        onClick={() => setToolsOpen(false)}
+                        className={({ isActive }) =>
+                          `flex items-center gap-2 px-4 py-2 text-sm ${
+                            isActive
+                              ? "bg-gray-100 text-black"
+                              : "text-gray-600 hover:bg-gray-50"
+                          }`
+                        }
+                      >
+                        <span className="material-symbols-rounded text-lg">
+                          {tool.icon}
+                        </span>
+                        <span>
+                          {lang === "es" ? tool.labelEs : tool.label}
+                        </span>
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
             <div className="flex items-center gap-x-2">
               <button
