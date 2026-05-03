@@ -1,6 +1,23 @@
-# Marco G | Portfolio
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/marcogll/mg_data_storage/b1b4035928e086f9394baf9988f80f4b0075ae20/soul23/logo/s23_logo_wh.png">
+    <img src="https://raw.githubusercontent.com/marcogll/mg_data_storage/b1b4035928e086f9394baf9988f80f4b0075ae20/soul23/logo/s23_logo_blk.png" alt="Soul23" width="110">
+  </picture>
+</p>
 
-Portfolio personal construido con React, Vite y Express. El frontend sirve el sitio público y el backend expone una API simple para utilidades del sitio y publicación de scripts.
+<h1 align="center">marcogll.githubio.com.git</h1>
+
+<p align="center">
+  Portfolio personal construido con React, Vite y Express. El frontend sirve el sitio público y el backend expone una API simple para utilidades del sitio y publicación de scripts.
+</p>
+
+<p align="center">
+  [![Docker](https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/marcogll)
+  [![Node.js](https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://github.com/marcogll)
+  [![React](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://github.com/marcogll)
+  [![Tailwind](https://img.shields.io/badge/tailwind-06B6D4?style=for-the-badge&logo=tailwind&logoColor=white)](https://github.com/marcogll)
+</p>
+
 
 ## Quick Start
 
@@ -42,7 +59,7 @@ Edita `src/data/config.json`:
   "jobEs": "Ingeniero de Procesos",
   "desc": "Developer, Engineer & always thinking in stuff",
   "descEs": "Desarrollador, Ingeniero y siempre pensando en cosas",
-  "email": "marco@soul23.cloud",
+  "email": "marco@soul23.mx",
   "status": "on",
   "hireMeLink": "https://calendly.com/alma_dev/30min",
   "projects": [],
@@ -73,6 +90,8 @@ Edita `src/data/config.json`:
 | `TIMEZONE` | `UTC` | Zona horaria usada por `/api/time` |
 | `CONTACT_WEBHOOK` | vacío | Webhook para `POST /api/contact` |
 | `VITE_API_PASSWORD` | vacío | Contraseña opcional para flujos frontend heredados |
+| `SCRIPTS_BASIC_USER` | vacío | Usuario para proteger `/api/scripts` y archivos publicados |
+| `SCRIPTS_BASIC_PASSWORD` | vacío | Password para proteger `/api/scripts` y archivos publicados |
 
 Ejemplo de `.env`:
 
@@ -81,6 +100,8 @@ PORT=3002
 TIMEZONE=America/Monterrey
 CONTACT_WEBHOOK=
 VITE_API_PASSWORD=
+SCRIPTS_BASIC_USER=
+SCRIPTS_BASIC_PASSWORD=
 ```
 
 ## API
@@ -123,7 +144,7 @@ Payload esperado:
 ```json
 {
   "name": "Marco",
-  "email": "marco@soul23.cloud",
+  "email": "marco@soul23.mx",
   "phone": "8112345678",
   "business": "Soul23",
   "subject": "Nuevo proyecto",
@@ -144,6 +165,7 @@ Si `CONTACT_WEBHOOK` no existe, responde `500`.
 ## Publicación de scripts
 
 El proyecto publica el contenido del directorio `scripts/` desde el backend.
+Las rutas quedan protegidas con HTTP Basic Auth cuando `SCRIPTS_BASIC_USER` y `SCRIPTS_BASIC_PASSWORD` están configurados. Si faltan, el backend responde `404`.
 
 ### Rutas disponibles
 
@@ -184,7 +206,7 @@ Prepara una instalación básica del proyecto:
 Ejemplo:
 
 ```bash
-./scripts/setup.sh marco.soul23.cloud 3002 America/Monterrey
+./scripts/setup.sh marco.soul23.mx 3002 America/Monterrey
 ```
 
 Qué hace:
