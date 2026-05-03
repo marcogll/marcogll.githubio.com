@@ -7,20 +7,15 @@
 </picture>
 </a>
 
+</div>
+
 # Portfolio Mg
 
-Python-based application for business operations ⚙️
+Sitio web corporativo para presencia digital 🌐
 
 <p>
-    <img src="https://img.shields.io/badge/Docker-111111?style=flat-square&logo=docker&logoColor=white" alt="Docker">
-  <img src="https://img.shields.io/badge/Node.js-111111?style=flat-square&logo=node.js&logoColor=white" alt="Node.js">
-  <img src="https://img.shields.io/badge/Python-111111?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/React-111111?style=flat-square&logo=react&logoColor=white" alt="React">
-  <img src="https://img.shields.io/badge/Tailwind-111111?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind">
-
+  <img src="https://img.shields.io/badge/español-111111?style=flat-square&logo=googletranslate&logoColor=white" alt="Español">
 </p>
-
-</div>
 
 ---
 
@@ -264,4 +259,5 @@ El sitio soporta inglés y español. El cambio se hace desde el botón de bander
 ---
 
 Built with React + Tailwind CSS + Vite + Express
+
 
