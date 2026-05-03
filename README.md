@@ -1,33 +1,27 @@
-<div align="center">
-
-<a href="https://soul23.mx">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/marcogll/mg_data_storage/refs/heads/main/soul23/logo/soul23_logo_wh.png">
-  <img src="https://raw.githubusercontent.com/marcogll/mg_data_storage/refs/heads/main/soul23/logo/soul23_logo_blk.png" alt="Soul23" width="110">
-</picture>
-</a>
-
-</div>
-
-# Portfolio Mg
-
-Corporate website for digital presence 🌐
-
-<p>
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=white" alt="React">
-  <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind">
-  <img src="https://img.shields.io/badge/english-111111?style=flat-square&logo=googletranslate&logoColor=white" alt="English">
-  <img src="https://img.shields.io/badge/website-111111?style=flat-square&logo=github&logoColor=white" alt="Website">
+<p align="center">
+  <img src="https://raw.githubusercontent.com/marcogll/mg_data_storage/refs/heads/main/soul23/logo/soul23_logo.svg" width="110" alt="Soul23">
 </p>
 
----
+<h1 align="center">Portfolio Mg</h1>
 
-<h1 align="center">marcogll.githubio.com.git</h1>
+<p align="center">
+  Sitio web corporativo para presencia digital 🌐
+</p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Docker-3a3a3a?style=flat-square&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Python-3a3a3a?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/React-3a3a3a?style=flat-square&logo=react&logoColor=white" alt="React">
+</p>
 
+  Sitio web corporativo para presencia digital 🌐
+</p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Docker-3a3a3a?style=flat-square&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Python-3a3a3a?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/React-3a3a3a?style=flat-square&logo=react&logoColor=white" alt="React">
+</p>
 
 ## Quick Start
 
@@ -264,6 +258,7 @@ El sitio soporta inglés y Español. El cambio se hace desde el botón de bander
 ---
 
 Built with React + Tailwind CSS + Vite + Express
+
 
 
 
