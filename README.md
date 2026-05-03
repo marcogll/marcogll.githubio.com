@@ -1,22 +1,27 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://soul23.mx/logo/s23_logo_wh.png">
-    <img src="https://soul23.mx/logo/s23_logo_blk.png" alt="Soul23" width="110">
-  </picture>
+<div align="center">
+
+<img src="https://soul23.mx/logo/soul23_logo.svg" width="90" alt="Soul23">
+
+# Portfolio Mg
+
+Python-based application for business operations ⚙️
+
+<p>
+    <img src="https://img.shields.io/badge/Docker-111111?style=flat-square&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Node.js-111111?style=flat-square&logo=node.js&logoColor=white" alt="Node.js">
+  <img src="https://img.shields.io/badge/Python-111111?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/React-111111?style=flat-square&logo=react&logoColor=white" alt="React">
+  <img src="https://img.shields.io/badge/Tailwind-111111?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind">
+
 </p>
+
+</div>
+
+---
 
 <h1 align="center">marcogll.githubio.com.git</h1>
 
-<p align="center">
-  Portfolio personal construido con React, Vite y Express. El frontend sirve el sitio público y el backend expone una API simple para utilidades del sitio y publicación de scripts.
-</p>
 
-<p align="center">
-  [![Docker](https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/marcogll)
-  [![Node.js](https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://github.com/marcogll)
-  [![React](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://github.com/marcogll)
-  [![Tailwind](https://img.shields.io/badge/tailwind-06B6D4?style=for-the-badge&logo=tailwind&logoColor=white)](https://github.com/marcogll)
-</p>
 
 
 ## Quick Start
@@ -251,8 +256,7 @@ El sitio soporta inglés y español. El cambio se hace desde el botón de bander
 
 ## Footer
 
-El footer usa `src/assets/logo_soul23/soul23_logo.svg` y muestra el texto legal adaptado al idioma activo.
-
 ---
 
 Built with React + Tailwind CSS + Vite + Express
+
