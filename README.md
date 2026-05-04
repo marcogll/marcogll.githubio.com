@@ -14,15 +14,6 @@
   <img src="https://img.shields.io/badge/React-3a3a3a?style=flat-square&logo=react&logoColor=white" alt="React">
 </p>
 
-  Sitio web corporativo para presencia digital 🌐
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Docker-3a3a3a?style=flat-square&logo=docker&logoColor=white" alt="Docker">
-  <img src="https://img.shields.io/badge/Python-3a3a3a?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/React-3a3a3a?style=flat-square&logo=react&logoColor=white" alt="React">
-</p>
-
 ## Quick Start
 
 ```bash
